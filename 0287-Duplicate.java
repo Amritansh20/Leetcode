@@ -21,3 +21,5 @@ class Solution {
         return low;
     }
 }
+
+/* TC-> O(logN)  SC-> O(1)*/
