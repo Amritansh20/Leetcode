@@ -24,6 +24,4 @@ class Solution {
      recur(nums,ds,ans,freq);
      return ans;    
     }
-} 0046-Permutations {
-    
 }

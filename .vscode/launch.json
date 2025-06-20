@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "Test",
+            "projectName": "Leetcode_31ae67cb"
+        },
+        {
+            "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "Test",
+            "projectName": "Leetcode_88d81250"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Can_I_Square",
+            "request": "launch",
+            "mainClass": "Can_I_Square",
+            "projectName": "Leetcode_88d81250"
+        },
+        {
+            "type": "java",
+            "name": "Latin_Matrix",
+            "request": "launch",
+            "mainClass": "Latin_Matrix",
+            "projectName": "Leetcode_88d81250"
+        },
+        {
+            "type": "java",
+            "name": "Odd_One",
+            "request": "launch",
+            "mainClass": "Odd_One",
+            "projectName": "Leetcode_88d81250"
+        }
+    ]
+}

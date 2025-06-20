@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
     public static boolean isPossible(int token, int power){
         if(power>=token)
