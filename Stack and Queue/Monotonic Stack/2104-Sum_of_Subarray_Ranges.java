@@ -1,9 +1,9 @@
 /*
     This problem is extension of LC-907 Sum of Subarray Minimums.
-    In LC 907 we found NSE and NGE in order to find the sum of minimums in all subarray.
+    In LC 907 we found NSE and PSE in order to find the sum of minimums in all subarray.
 
     Here we did that. We found the sum of all minimum elements from all subarrays.
-    Additionaly we founf the sum of all maximums from all subarrays. 
+    Additionaly we(NGE and PGE) found the sum of all maximums from all subarrays. 
     and returned the diff. 
 
     T.C - O(n)
