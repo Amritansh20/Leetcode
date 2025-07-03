@@ -43,6 +43,17 @@ package Strings;
         return best.substring(0,longest-possible)
         else
         return best
+
+
+    Reminder:
+    If you have to compare to String lexicographcally.
+    It's better to use String rather that StringBuilder
+    String implements Comparable interface which brings compareTofunction
+    str1.compareTo(str2)
+    if:
+    str1 is lexicograically bigger than str2 it will return >0
+    str1==str2, it retruns 0;
+    str1<str2 it returns -1
 */
 class Solution {
     public String answerString(String word, int numFriends) {
