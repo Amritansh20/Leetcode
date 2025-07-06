@@ -1,5 +1,3 @@
-package Graph;
-
 import java.util.*;
 class Solution {
 
@@ -76,11 +74,13 @@ class Solutions {
         }
         
         int[] vis = new int[V];
-        
+        // The outer loop is for components. 
+
         for(int i=0;i<V;i++){
             if(vis[i]==0){
              vis[i]=1;
              q.offer(new Pair(i,-1));
+            
             while(!q.isEmpty()){
             Pair p = q.poll();
             int node = p.node;
@@ -95,6 +95,7 @@ class Solutions {
                 }
             }
         }
+
         }
         }
         return false;
