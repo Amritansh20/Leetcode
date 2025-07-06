@@ -68,7 +68,7 @@ class Solution {
 // BFS
 // Time - O(V+E)
 class Solutions {
-    public static ArrayList<Integer> topoSort(int V, int[][] edges) {
+    public static boolean topoSort(int V, int[][] edges) {
         int[] inDegree = new int[V];
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
         ArrayDeque<Integer> q = new ArrayDeque<>();
@@ -103,6 +103,10 @@ class Solutions {
                 q.offer(it);
             }
         }
-        return ans;
+
+        if(ans.size()==V)
+        return true;
+       
+        return false;
     }
 }
