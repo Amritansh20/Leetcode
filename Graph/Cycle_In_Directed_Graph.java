@@ -14,6 +14,17 @@ import java.util.*;;
 
     Draw this directed graph. It is not cyclic but the logic of undirected grapgh will give this as cyclic output.
 
+
+    The BSF version where we can find if the a given direcetd graph is cyclic 
+    or not is by Khan's Algo. 
+    Idea -> Khan's Algorithm is BFS version of topological sort.
+    And we know topological sort is applied on DAG. If we apply khan's
+    Algo in any directed graph and store the ans in a list.
+    If list contains all the vertices it is acyclic, if not then 
+    there is a cycle. 
+
+    Course schduler 1 and 2 are based in this idea.
+
  */
 class Solution {
     public static boolean solve(ArrayList<ArrayList<Integer>> adj, int node, int[] vis, int[] pathVis){
@@ -50,5 +61,48 @@ class Solution {
             }
         }
         return false;
+    }
+}
+
+
+// BFS
+// Time - O(V+E)
+class Solutions {
+    public static ArrayList<Integer> topoSort(int V, int[][] edges) {
+        int[] inDegree = new int[V];
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        ArrayDeque<Integer> q = new ArrayDeque<>();
+        
+        for(int i=0;i<V;i++)
+        adj.add(new ArrayList<>());
+        
+        for(int i=0;i<edges.length;i++)
+        adj.get(edges[i][0]).add(edges[i][1]);
+        
+        for(int i=0;i<adj.size();i++){
+            for(int j=0;j<adj.get(i).size();j++){
+                inDegree[adj.get(i).get(j)]++;
+            }
+        }
+        
+        for(int i=0;i<V;i++){
+            if(inDegree[i]==0)
+            q.offer(i);
+        }
+        
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        while(!q.isEmpty()){
+            int node = q.poll();
+            ans.add(node);
+            
+            for(int it : adj.get(node)){
+                inDegree[it]--;
+                
+                if(inDegree[it]==0)
+                q.offer(it);
+            }
+        }
+        return ans;
     }
 }
