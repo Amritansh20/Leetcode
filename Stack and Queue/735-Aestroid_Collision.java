@@ -46,7 +46,7 @@ class Solution {
                 stack.pop(); // Smaller right jaane wale aestroids getting destroyed.
                 
                 if(!stack.isEmpty() && stack.peek()>0 && stack.peek()==Math.abs(asteroids[i])){
-                stack.pop(); // Both explode of equal size (only 1 pair allowed)
+                stack.pop(); // Both explode of equal size (only 1 pair allowed) Very imp point
                 }else if(stack.isEmpty() || stack.peek()<0){ 
                     // Stack is empty or top is also a left-moving asteroid (Edge case 1 from above)
                     stack.push(asteroids[i]); // push the surviving left-moving asteroid
