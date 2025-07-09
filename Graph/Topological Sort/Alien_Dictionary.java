@@ -54,6 +54,13 @@ class Solution{
         
         for(int i=0;i<K;i++)
         adj.add(new ArrayList<>());
+        // We are comparing all adjacent pairs
+        // Since the given dictinaory is sorted
+        // dict[0] is smaller than dict[1]
+        // This automatically makes dict[0]<dic[2]
+        
+        // In two adjacent strings we are chceking till I get to 
+        // a point where there is a mismatch. Lexicograph concept.
 
         for(int i=0;i<dict.length-1;i++){
             String str1 = dict[i];
