@@ -1,37 +1,29 @@
+// This approach can only com to your mind once you consider that input is already non
+// overlapping.
+
+// This is extension of Merge Intervals.
 import java.util.*;
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
         List<int[]> ans = new ArrayList<>();
-        int start = newInterval[0];
-        int end = newInterval[1];
-        boolean inserted = false;
-
-        for(int[] interval : intervals){
-            int nStart = interval[0];
-            int nEnd = interval[1];
-
-            if(nEnd < start || inserted){
-                ans.add(new int[]{nStart,nEnd});
-                continue;
+        int i=0;
+        while(i<intervals.length){
+            if(intervals[i][1]<newInterval[0])
+            ans.add(intervals[i]);
+            else if(intervals[i][0]>newInterval[1])
+            break;
+            else{
+                newInterval[0] = Math.min(intervals[i][0],newInterval[0]);
+                newInterval[1]=Math.max(intervals[i][1],newInterval[1]);
             }
-
-            start = Math.min(start,nStart);
-            if(end<nStart){
-                ans.add(new int[]{start,end});
-                ans.add(new int[] {nStart,nEnd});
-                inserted=true;
-                continue;
-            }
-            if(end <=nEnd){
-                ans.add(new int[]{start,nEnd});
-                inserted = true;
-            }
+            i++;
         }
+        ans.add(newInterval);
 
-        if(inserted!=true){
-            ans.add(new int[] {start,end});
+        while(i<intervals.length){
+            ans.add(intervals[i]);
+            i++;
         }
-
-        return ans.toArray(new int[ans.size()] []);
-    }   
+        return ans.toArray(new int[ans.size()][]);
+    }
 }
