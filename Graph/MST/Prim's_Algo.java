@@ -1,5 +1,6 @@
 package MST;
 
+// T.C - ElogV
 import java.util.*;
 class Pair{
     int node;
