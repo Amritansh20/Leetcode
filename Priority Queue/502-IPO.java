@@ -65,3 +65,51 @@ class Solution {
         return totalRaised;
     }
 }
+
+
+/*
+    Better time - 
+        O(n) for project construction
+        All projects goes to pq once O(nlogn)
+        Iterating k time and doing heap operations (k log N)
+
+        total - O(nlog n + k logn)
+
+*/
+class Project{
+    int profit;
+    int capital;
+
+    Project(int profit, int capital){
+        this.profit = profit;
+        this.capital=capital;
+    }
+}
+class Solutions {
+    public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
+        int n = profits.length;
+        List<Project> projects = new ArrayList<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)->b-a);
+
+        for(int i=0;i<n;i++){
+            projects.add(new Project(profits[i],capital[i]));
+        }
+
+        Collections.sort(projects,(a,b)->a.capital-b.capital);
+
+        int j=0;
+        for(int i=0;i<k;i++){
+            while(j<n && projects.get(j).capital<=w){
+                pq.offer(projects.get(j).profit);
+                j++;
+            }
+
+            if(pq.isEmpty())
+            break;
+
+            w+= pq.poll();
+
+        }
+        return w;
+    }
+}
