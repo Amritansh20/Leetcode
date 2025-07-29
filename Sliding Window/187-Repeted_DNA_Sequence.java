@@ -3,6 +3,9 @@ import java.util.*;
 /*
     T.C - O(n)
     S.c- O(n)
+
+    // This question cam also be solved by rolling hash. 
+    // Refer Educative Solution
  */
 class Solution {
     public List<String> findRepeatedDnaSequences(String s) {
