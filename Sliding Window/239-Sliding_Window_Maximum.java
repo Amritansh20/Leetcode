@@ -53,3 +53,66 @@ class Solution {
         return ans.stream().mapToInt(i->i.intValue()).toArray();
     }
 }
+
+/*
+    The last solution we had has T.C of O(nlogn)
+    Well, The T.C in this solution seems to be O(n*k) but it's not if we look very deeply.
+
+    Let's understand the approach first:
+    We know the size of our window.
+    We took the help of a deque where we are storing the index of element which could a a possible
+    maximum of the current window or ahead.
+
+    Everytime we slide we clean out deque.
+    For cleaning we are removing all the elements form the deque which is smaller than
+    current element. So, that maximum is always at the first.
+
+    Note: we are not discriminating when we are adding indexes to out deque. We are only filtering while
+    cleaning up.
+
+    T.C- Well it seems O(n*k) but it's actually O(n)
+    Total slides - O(n-k)
+
+    If there is input in asending order then removal from deque happens only once at each step.
+    If there is input in desending order then we all the elements(index) will be added as a part of 
+    sliding window loop but no clean up will ever take place. The removal from deque will happen only 
+    those(sigle element) we afll out of window. This will again happen in sliding window loop.
+
+    So, T.C - O(n)
+
+
+ */
+class Solutions {
+    public void cleanUp(Deque<Integer> deque, int i, int[] nums){
+        while(!deque.isEmpty() && nums[i]>= nums[deque.getLast()])
+        deque.removeLast();
+    }
+
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int n = nums.length;
+        Deque<Integer> deque = new ArrayDeque<>();
+        int[] ans = new int[n-k+1];
+        
+        if(n==1)
+        return nums;
+
+        for(int i=0;i<k;i++){
+            cleanUp(deque,i,nums);
+            deque.addLast(i);
+        }
+
+        ans[0] = nums[deque.getFirst()];
+
+        for(int i=k;i<n;i++){
+            cleanUp(deque,i,nums);
+
+            if(!deque.isEmpty() && deque.getFirst() < i-k+1)
+            deque.removeFirst();
+
+            deque.addLast(i);
+            ans[i-k+1] = nums[deque.getFirst()];
+        }
+        return ans;
+
+    }
+}
