@@ -1,30 +1,26 @@
 import java.util.*;
 class Solution {
     public int characterReplacement(String s, int k) {
-        int left=0,right=0;
-        Map<Character,Integer> map = new HashMap<>();
-        int maxLen =0,maxOccur=0;
-
-
+        int left=0;
+        int right=0;
+        int maxOccur=0;
+        Map<Character, Integer> map = new HashMap<>();
+        int maxLen =0;
         while(right<s.length()){
-            char ch = s.charAt(right);
-            map.put(ch,map.getOrDefault(ch,0)+1);
-
-            maxOccur = Math.max(maxOccur,map.get(ch));
+            map.put(s.charAt(right),map.getOrDefault(s.charAt(right),0)+1);
+            maxOccur = Math.max(maxOccur,map.get(s.charAt(right)));
 
             while(left<=right && (right-left+1)-maxOccur>k){
-                char leftChar = s.charAt(left);
-                int leftFreq = map.get(leftChar);
-                leftFreq--;
-
-                if(leftFreq==0)
-                map.remove(leftChar);a
+                int freq = map.get(s.charAt(left));
+                freq--;
+                if(freq==0)
+                map.remove(s.charAt(left));
                 else
-                map.put(leftChar,leftFreq);
+                map.put(s.charAt(left),freq);
                 
                 left++;
             }
-            maxLen = Math.max(maxLen,right-left+1);
+            maxLen = Math.max(right-left+1,maxLen);
             right++;
         }
         return maxLen;
