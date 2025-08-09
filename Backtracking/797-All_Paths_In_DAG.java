@@ -2,6 +2,7 @@
     In a DAG, number of possible paths from 0-(n-1) is 2^(n-2) (Remember this)
     For each path I am taking L time to construct.
 
+    T.C - Number of paths * time to construct a path
     T.C - O(2^n-2 * L)
 
  */
