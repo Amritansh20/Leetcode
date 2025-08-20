@@ -2,6 +2,9 @@ import java.util.*;
 /*
     Time - O(m*n log(m*n))
     space - O(k)
+
+    This question can come in the form of Kth smallest number 
+    is sortest lists. Same approach
  */
 class Solution {
     public int kthSmallest(int[][] matrix, int k) {
