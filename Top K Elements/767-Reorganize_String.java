@@ -14,7 +14,8 @@
         3- pushing map items in PriorityQueue -  O(k logk) k is number of item in map
         4- while loop - Here you are processing n elements as you decrease the freq and put it back 
             so O(n logk) - k is distict number of char
-        Overall - O(n logk)
+        Overall - O(n logk) We know that k will be atmost 276 so consedering it as O(1)
+        Over all - O(n)
     S.C - O(k) - where k is distinct chars present in string 
  */
 import java.util.*;
