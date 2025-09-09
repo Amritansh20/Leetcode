@@ -1,34 +1,33 @@
-import java.util.ArrayList;
- class Solution {
-    public static int search(ArrayList<Integer> arr, int n, int target) {
-        // Write your code here.
-        int start=0;
-        int end =n-1;
+/*
+ * T.C - (logn)
+ * S.C - O(1)
+ * 
+ */
+class Solution {
+    public int search(int[] nums, int target) {
+       int low=0;
+       int high= nums.length-1;
 
-        while(start<=end){
-            int mid = start + (end-start)/2;
+       while(low<=high){
+            int mid = low + (high-low)/2;
 
-            if(arr.get(mid)==target)
+            if(target==nums[mid])
             return mid;
 
-            if(arr.get(start) <= arr.get(mid)){
-                if(target >= arr.get(start) && target <= arr.get(mid)){
-                    end = mid-1;
+            if(nums[low]<=nums[mid]){
+                if(target>=nums[low] && target<=nums[mid]){
+                    high=mid-1;
                 }else{
-                    start = mid+1;
+                    low=mid+1;
                 }
             }else{
-                if(target >= arr.get(mid) && target <= arr.get(end)){
-                    start = mid+1;
+                 if(target>=nums[mid] && target<=nums[high]){
+                    low=mid+1;
                 }else{
-                    end = mid-1;
+                    high=mid-1;
                 }
             }
-        }
-        return -1;
+       } 
+       return -1;
     }
 }
-
-
-// Time - O(logN)
-// Space  - O(1)
