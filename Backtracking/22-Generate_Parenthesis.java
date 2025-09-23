@@ -48,3 +48,32 @@ class Solution {
         return ans;
     }
 }
+
+// Better -> Everything is same. The only diff is that we are generating only valid expression.
+class Solutions {
+    public void solve(List<String> ans, StringBuilder ds, int n, int open, int close){
+        if(ds.length()==2*n){
+            ans.add(ds.toString());
+            return;
+        }
+
+        if(open<n){
+        ds.append('(');
+        solve(ans,ds,n,open+1,close);
+        ds.deleteCharAt(ds.length()-1);
+        }
+        
+        if(close<open){
+        ds.append(')');
+        solve(ans,ds,n,open,close+1);
+        ds.deleteCharAt(ds.length()-1);
+        }
+       
+    }
+    public List<String> generateParenthesis(int n) {
+        List<String> ans = new ArrayList<>();
+        StringBuilder ds = new StringBuilder();
+        solve(ans,ds,n,0,0);
+        return ans;
+    }
+}
