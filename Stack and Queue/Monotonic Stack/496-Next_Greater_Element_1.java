@@ -1,0 +1,34 @@
+
+import java.util.*;
+class Solution {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        int n = nums2.length;
+        int[] ng = new int[n];
+        Arrays.fill(ng,-1);
+
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        Map<Integer,Integer> map = new HashMap<>();
+       
+        for(int i=0;i<nums2.length;i++)
+        map.put(nums2[i],i);
+
+        for(int i=0;i<nums2.length;i++){
+            while(!stack.isEmpty() && nums2[i]>nums2[stack.peek()]){
+                ng[stack.peek()]=nums2[i];
+                stack.pop();
+            }
+            stack.push(i);
+        }
+
+        for(int i=0;i<n;i++)
+        System.out.print(ng[i]+" ");
+
+        int[] ans = new int[nums1.length];
+        for(int i=0;i<nums1.length;i++){
+            int index = map.get(nums1[i]);
+            int value = ng[index];
+            ans[i]=value;
+        }
+        return ans;
+    }
+}
